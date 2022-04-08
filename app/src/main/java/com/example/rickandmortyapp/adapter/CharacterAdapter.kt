@@ -8,14 +8,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rickandmortyapp.R
 import com.example.rickandmortyapp.model.charactersmodel.Character
+import com.example.rickandmortyapp.model.charactersmodel.Characters
 import com.squareup.picasso.Picasso
 
 class CharacterAdapter(
-    private var characterList: List<Character> = listOf()
+    private var characterList: MutableList<Character> = mutableListOf()
 ) : RecyclerView.Adapter<CharacterViewAdapter>() {
 
     fun updateData(characterL: List<Character>) {
-        characterList = characterL
+        characterList.clear()
+        characterList.addAll(characterL)
         notifyDataSetChanged()
     }
 
@@ -32,6 +34,12 @@ class CharacterAdapter(
     }
 
     override fun getItemCount(): Int = characterList.size
+
+//    fun setNewCharacter(newCharacter: Characters){
+//        characterList.clear()
+//        characterList.addAll(newCharacter as MutableList())
+//        notifyDataSetChanged()
+//    }
 }
 
 

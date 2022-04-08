@@ -46,7 +46,7 @@ val networkModule = module {
 }
 
 val koinViewModelModule = module {
-    viewModel {RickAndMortyViewModel(get(),get())}
+    viewModel {RickAndMortyViewModel(get())}
 }
 
 
