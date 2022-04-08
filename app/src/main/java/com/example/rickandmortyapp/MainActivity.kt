@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-      // navegation()
-        navigation2()
+      navegation()
+     //   navigation2()
     }
 
     fun navegation() {
