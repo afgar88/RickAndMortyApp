@@ -1,12 +1,15 @@
 package com.example.rickandmortyapp.views
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmortyapp.R
 import com.example.rickandmortyapp.databinding.FragmentCharactersBinding
+import com.example.rickandmortyapp.viewmodel.RickAndMortyViewModel
 
 
 class CharactersFragment : BaseFragment() {
@@ -26,7 +29,17 @@ class CharactersFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
+        binding.recyclerCharacter.apply {
+            layoutManager=
+                LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+            adapter=characterAdapter
+        }
+
+        rickAndMortyViewModel.getAllCharacters()
+        Log.d("Characters",rickAndMortyViewModel.getAllCharacters().toString())
+
+
         return binding.root
     }
 
