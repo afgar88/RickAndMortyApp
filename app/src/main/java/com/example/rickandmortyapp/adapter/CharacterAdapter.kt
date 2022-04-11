@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rickandmortyapp.R
 import com.example.rickandmortyapp.model.charactersmodel.Character
-import com.example.rickandmortyapp.model.charactersmodel.Characters
 import com.squareup.picasso.Picasso
 
 class CharacterAdapter(

@@ -6,6 +6,6 @@ import com.google.gson.annotations.SerializedName
 data class Locations(
     @SerializedName("info")
     val info: Info,
-    @SerializedName("characters")
+    @SerializedName("results")
     val Locations: List<Location>
 )

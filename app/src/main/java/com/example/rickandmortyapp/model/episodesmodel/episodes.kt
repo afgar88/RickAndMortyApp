@@ -6,6 +6,6 @@ import com.google.gson.annotations.SerializedName
 data class episodes(
     @SerializedName("info")
     val info: Info,
-    @SerializedName("characters")
+    @SerializedName("results")
     val episodes: List<episode>
 )
