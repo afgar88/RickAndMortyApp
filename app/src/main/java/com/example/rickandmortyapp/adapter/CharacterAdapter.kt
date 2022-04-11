@@ -35,11 +35,6 @@ class CharacterAdapter(
 
     override fun getItemCount(): Int = characterList.size
 
-//    fun setNewCharacter(newCharacter: Characters){
-//        characterList.clear()
-//        characterList.addAll(newCharacter as MutableList())
-//        notifyDataSetChanged()
-//    }
 }
 
 

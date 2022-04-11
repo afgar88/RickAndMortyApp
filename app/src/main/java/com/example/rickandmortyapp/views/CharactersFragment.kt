@@ -1,20 +1,16 @@
 package com.example.rickandmortyapp.views
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.rickandmortyapp.R
 import com.example.rickandmortyapp.databinding.FragmentCharactersBinding
-import com.example.rickandmortyapp.model.charactersmodel.Character
 import com.example.rickandmortyapp.model.charactersmodel.Characters
 import com.example.rickandmortyapp.utils.RickAndMortyState
-import com.example.rickandmortyapp.viewmodel.RickAndMortyViewModel
 
 
 class CharactersFragment : BaseFragment() {
@@ -23,9 +19,6 @@ class CharactersFragment : BaseFragment() {
         FragmentCharactersBinding.inflate(layoutInflater)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +34,9 @@ class CharactersFragment : BaseFragment() {
 
         binding.recyclerCharacter.apply {
             layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+
+                    GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
+                    //LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = characterAdapter
         }
 
@@ -61,16 +56,8 @@ class CharactersFragment : BaseFragment() {
                     var characters:Characters = state.data as Characters
 
 
-                  Log.d("Characters",characters.toString())
+                   characterAdapter.updateData(characters.characters)
 
-
-                   // characterAdapter.updateData(characters.)
-
-//                    when (state.data) {
-//                        is List<*> -> {
-//                            characterAdapter.setNewCharacter(state.data as List<Character>)
-//                        }
-//                    }
                 }
                 is RickAndMortyState.ERROR -> {
                     Toast.makeText(
