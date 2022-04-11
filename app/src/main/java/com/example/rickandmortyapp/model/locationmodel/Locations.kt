@@ -7,5 +7,5 @@ data class Locations(
     @SerializedName("info")
     val info: Info,
     @SerializedName("results")
-    val Locations: List<Location>
+    val location: List<Location>
 )

@@ -1,18 +1,24 @@
 package com.example.rickandmortyapp.views
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmortyapp.R
 import com.example.rickandmortyapp.databinding.FragmentEpisodesBinding
 import com.example.rickandmortyapp.databinding.FragmentLocationsBinding
+import com.example.rickandmortyapp.model.episodesmodel.episode
+import com.example.rickandmortyapp.model.episodesmodel.episodes
+import com.example.rickandmortyapp.utils.RickAndMortyState
 
 
 class EpisodesFragment : BaseFragment() {
 
-    val binding by lazy{
+    val binding by lazy {
         FragmentEpisodesBinding.inflate(layoutInflater)
     }
 
@@ -28,6 +34,35 @@ class EpisodesFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding.recyclerEpisodes.apply {
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            adapter = episodeAdapter
+        }
+
+        rickAndMortyViewModel.getAllEpisodes()
+        Log.d("Episodes", rickAndMortyViewModel.getAllEpisodes().toString())
+
+        rickAndMortyViewModel.allepisodes.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is RickAndMortyState.LOADING -> {
+                    Toast.makeText(requireContext(), "Loading...", Toast.LENGTH_LONG).show()
+                }
+                is RickAndMortyState.SUCCESS<*> -> {
+                    var episodes: episodes = state.data as episodes
+                    episodeAdapter.update(episodes.episodes)
+                }
+                is RickAndMortyState.ERROR -> {
+                    Toast.makeText(
+                        requireContext(),
+                        state.error.localizedMessage,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+
+        }
+
         // Inflate the layout for this fragment
         return binding.root
     }
