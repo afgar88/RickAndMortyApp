@@ -30,7 +30,8 @@ class LocationsFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding.recyclerLocation.apply {
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = locationAdapter
         }
         rickAndMortyViewModel.getAllLocations()

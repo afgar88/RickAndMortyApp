@@ -30,8 +30,6 @@ class LocationAdapter(
     }
 
     override fun getItemCount(): Int = locationList.size
-
-
 }
 
 class LocationViewAdapter(itemView: View) : RecyclerView.ViewHolder(itemView) {
