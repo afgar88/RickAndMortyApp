@@ -28,6 +28,7 @@ class RickAndMortyViewModel(
     val allepisodes: LiveData<RickAndMortyState> get() = _episodes
 
     fun getAllCharacters() {
+        _characters.postValue(RickAndMortyState.LOADING)
         viewModelScope.launch(ioDispatcher) {
             try {
                 val response = networkRepo.getAllCharacters()
@@ -47,6 +48,7 @@ class RickAndMortyViewModel(
     }
 
     fun getAllLocations() {
+        _locations.postValue(RickAndMortyState.LOADING)
         viewModelScope.launch(ioDispatcher) {
             try {
                 val response = networkRepo.getAllLocations()
@@ -66,6 +68,7 @@ class RickAndMortyViewModel(
     }
 
     fun getAllEpisodes() {
+        _episodes.postValue(RickAndMortyState.LOADING)
         viewModelScope.launch(ioDispatcher) {
             try {
                 val response = networkRepo.getAllEpisodes()
