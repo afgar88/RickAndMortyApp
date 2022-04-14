@@ -5,10 +5,7 @@ import com.example.rickandmortyapp.model.charactersmodel.Characters
 import com.example.rickandmortyapp.network.RickAndMortyRepository
 import com.example.rickandmortyapp.utils.RickAndMortyState
 import com.google.common.truth.Truth.assertThat
-import io.mockk.clearAllMocks
-import io.mockk.coEvery
-import io.mockk.every
-import io.mockk.mockk
+import io.mockk.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.*
@@ -129,7 +126,7 @@ class RickAndMortyViewModelTest {
     }
 
     @Test
-    fun `get all episodes when trying to load from server returns loading state`() = runTest {
+    fun `get all episodes when trying to load from server returns loading state`() {
 
 
         val stateList = mutableListOf<RickAndMortyState>()
