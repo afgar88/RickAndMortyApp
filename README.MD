@@ -5,12 +5,11 @@
 
 ## Libraries
 
-* Retrofit: 
-* OkHttp:
-* Room:
-* Koin:
-* Navigation:
-* Picasso:
-* Junit:
-* Espresso:
+* Retrofit: Used for authenticate and interact with Rick and Morty API
+* OkHttp: Used for sending ans receive HTTP network request
+* Koin: Used for dependency injection
+* Navigation: Used for navigate between fragments
+* Picasso: Used for show the characters images
+* Junit: Used for unit test
+* Espresso: Used to UI test
 
